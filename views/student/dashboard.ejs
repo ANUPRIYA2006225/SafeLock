@@ -1,0 +1,147 @@
+<!-- navbar  -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
+    <div class="container">
+      <a href="#" class="navbar-brand">
+        <img src="/images/logo.png" alt="" width="45" height="40" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navmenu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item mr-1">
+            <a href="/" class="nav-link border border-dark">Hello, <%= user.name %></a>
+        </li>
+        <li class="nav-item mr-1">
+            <a href="/" class="nav-link border border-success">Home</a>
+        </li>
+
+        <li class="nav-item mr-1">
+            <a href="/student/dashboard" class="nav-link border border-success">Dashboard</a>
+        </li>
+          
+        <li class="nav-item mr-1">
+            <a href="/student/upload" class="nav-link border border-success">Add Doc</a>
+        </li>
+
+        <li class="nav-item mr-1">
+            <a href="/student/addNotes" class="nav-link border border-success">Add Note</a>
+        </li>
+
+        </ul>
+        <ul class="navbar-nav mr-0">
+            <li class="nav-item">
+                <a href="/student/logout" class="nav-link border border-success">LogOut</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+
+    <section id="advanced">
+        <div class="container-fluid bg-dark text-light p-3">
+            <h3 class="text-center">Your Documents</h3>
+            <p class="text-center text-info">
+            <span>
+                <img src="/images/ipfs-logo.png" alt="" width="40" height="40" />
+            </span>    
+            Stored on IPFS
+            </p>
+        </div>
+            
+
+        <div class="container p-2">
+            <div class="row">
+
+            <% hashes.forEach(hash=>{ %>
+                <div class="col-lg-3 col-md-4 col-sm-6 m-3">
+        
+                    <div class="card border-success" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="card-title text-dark"><%= hash.name %></h5>
+                        
+                        
+                        
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <i class="fa fa-link"></i>
+                                <a href="<%= hash.url %>" style="text-decoration: none;" target="_blank">Open Document</a>
+                            </li>   
+                        </ul>
+
+                        <p class=" mb-0" style="font-size: small; color: rgb(0, 0, 0);">
+                            <span class>File Description</span>
+                            <br>
+                            <span class="text-secondary"><%= hash.description %></span>
+                        </p>
+    
+                        
+                        <a href="<%= hash.url%>" class="btn btn-sm btn-success mt-2 float-right" target="_blank">Open Document</a>
+                        
+                        </div>
+                    </div>
+                    
+                </div>
+            <% }) %>
+                
+         
+            </div>
+        </div>
+
+
+        <div class="container-fluid bg-dark text-light p-3">
+            <h3 class="text-center">Your Saved Notes</h3>
+            <p class="text-center text-info">
+            <span>
+                <img src="/images/ipfs-logo.png" alt="" width="40" height="40" />
+            </span>    
+            Stored on IPFS
+            </p>
+        </div>
+
+
+        <div class="container p-2">
+            <div class="row">
+
+            <% texthashes.forEach(hash=>{ %>
+                <div class="col-lg-3 col-md-4 col-sm-6 m-3">
+        
+                    <div class="card border-success" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="card-title text-dark"><%= hash.title %></h5>
+                        
+                        
+                        
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <i class="fa fa-link"></i>
+                                <a href="<%= hash.url %>" style="text-decoration: none;" target="_blank">Open Document</a>
+                            </li>   
+                        </ul>
+    
+                        
+                        <a href="<%= hash.url%>" class="btn btn-sm btn-primary mt-2 float-right" target="_blank">Open Document</a>
+                        
+                        </div>
+                    </div>
+                    
+                </div>
+            <% }) %>
+                
+         
+            </div>
+        </div>
+   
+         
+            
+</section>
+
+
+<script src="/js/ipfs.js"></script>
